@@ -24,27 +24,6 @@ void main() {
   print(singlyLinkedList.first());
   print(singlyLinkedList.last());
   print(singlyLinkedList.size);
-
-  print('Removing Last ---------');
-  singlyLinkedList.removeLast();
-  print(singlyLinkedList);
-  print(singlyLinkedList.first());
-  print(singlyLinkedList.last());
-  print(singlyLinkedList.size);
-
-  print('Removing Last ---------');
-  singlyLinkedList.removeLast();
-  print(singlyLinkedList);
-  print(singlyLinkedList.first());
-  print(singlyLinkedList.last());
-  print(singlyLinkedList.size);
-
-  print('Removing Last ---------');
-  singlyLinkedList.removeLast();
-  print(singlyLinkedList);
-  print(singlyLinkedList.first());
-  print(singlyLinkedList.last());
-  print(singlyLinkedList.size);
 }
 
 class _Node<E> {
@@ -109,28 +88,6 @@ class SinglyLinkedList<E> {
     }
 
     return first;
-  }
-
-  E? removeLast() {
-    if (isEmpty) return null;
-
-    final last = _tail!.element;
-
-    var beforeTail = _head;
-
-    while (beforeTail != null && beforeTail.next != _tail) {
-      beforeTail = beforeTail.next;
-    }
-
-    _tail = beforeTail;
-    _tail?.next = null;
-    _size--;
-
-    if (_size == 0) {
-      _head = _tail = null;
-    }
-
-    return last;
   }
 
   @override
