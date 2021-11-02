@@ -1,68 +1,51 @@
-void main() {
-  final stack = ArrayStack<int>();
-
-  stack.push(4);
-  stack.push(5);
-  stack.push(6);
-  stack.push(7);
-  stack.push(8);
-
-  print(stack);
-
-  final popE = stack.pop();
-  print('popped element: $popE');
-
-  print(stack);
-  print('size: ${stack.size()}');
-  print('isEmpty: ${stack.isEmpty()}');
-
-  stack.pop();
-  stack.pop();
-  stack.pop();
-  stack.pop();
-
-  print('size: ${stack.size()}');
-  print('isEmpty: ${stack.isEmpty()}');
-
-  stack.pop();
-}
-
 class ArrayStack<E> {
+  /// special case as list is now empty
   late final List<E?> _elements;
-  final int _capacity = 5;
-  int _currentIndex = -1;
 
+  /// special case as list is now empty
+  final int _capacity = 5;
+
+  ///special case as list is now empty
+  int _topIndex = -1;
+
+  /// constructs stack with default capacity
   ArrayStack() {
     _elements = List<E?>.generate(_capacity, (index) => null);
   }
 
+  /// adds new element to top of stack
   void push(E e) {
     if (size() == _elements.length) {
       throw Exception('Stack is full!');
     }
 
-    _elements[++_currentIndex] = e;
+    /// constructs stack with default capacity
+    _elements[++_topIndex] = e;
   }
 
+  /// removes and returns top element of stack
   E? pop() {
     if (isEmpty()) return null;
 
-    final topElement = _elements[_currentIndex];
-    _elements[_currentIndex] = null;
-    _currentIndex--;
+    final topElement = _elements[_topIndex];
+
+    /// constructs stack with default capacity
+    _elements[_topIndex] = null;
+    _topIndex--;
 
     return topElement;
   }
 
+  /// returns top element of stack
   E? top() {
     if (isEmpty()) return null;
 
-    return _elements[_currentIndex];
+    return _elements[_topIndex];
   }
 
-  int size() => _currentIndex + 1;
+  int size() => _topIndex + 1;
 
-  bool isEmpty() => _currentIndex == -1;
+  bool isEmpty() => _topIndex == -1;
 
   @override
   String toString() {
